@@ -1,0 +1,57 @@
+rails generate model Account name:string account_type:string monthly_charge:decimal active:boolean
+
+rails generate model AddressType name:string description:string
+
+rails generate model Address address_type:references first_name:string last_name:string addressable_type:string addressable:references address1:string address2:string city:string state:references state_name:string zip_code:string phone:references alternative_phone:string default:boolean billing_default:boolean active:boolean country:references
+
+rails generate model Booking shipper:references trucker:references route:references route_start:string route_end:string booking_price:decimal booked_quantity:integer status:string is_completed:boolean pending_trucker_confirmation:boolean pending_shipper_confirmation:boolean booking_state:string load:references truck_owner_contact:string transporter_contact:string transporter_name:string trucker_name:string payment_state:string in_progress:boolean payment:references is_test:boolean total_amount:decimal tonnage:decimal truck_type:string material_type:string is_return_booking:boolean tracking_link:string tracking:references trucker_request:references read:boolean is_active:boolean consigner:references pickup_address:string drop_address:string consignee_name:string consignee:references
+
+rails generate model Comment note:text commentable_type:string commentable:references created_by:integer user:references
+
+rails generate model Consignee consignee_name:string consignee_address:string consignee_phone_no:string shipper:references city:string state:string
+
+rails generate model Consigner consigner_name:string consigner_address:string consigner_phone_no:string shipper:references city:string state:string
+
+rails generate model Coupon type:string code:string amount:decimal minimum_value:decimal percent:integer description:text combine:boolean starts_at:datetime expires_at:datetime
+
+rails generate model Driver driver:references trucker:references license_no:string rating:decimal bookings_count:integer route:references age:integer address:text address:references phone_no:string city:string state:string is_verified:boolean driver_name:string vehicle_number:string
+
+rails generate model Load load:references shipper:references route_start:string route_end:string tonnage:decimal truck_type:string truck_no_reqd:integer is_active:boolean is_booked:boolean is_completed:boolean load_state:string booked_price:decimal quoted_price:decimal last_quoted_price:decimal pickup_date:date pickup_time:time contact_no:string material_type:string volume:decimal read:boolean
+
+rails generate model Newsletter name:string autosubscribe:boolean
+
+rails generate model PaymentProfile user:references address:references payment_cim:references default:boolean active:boolean last_digits:string month:string year:string cc_type:string first_name:string last_name:string card_name:string
+
+rails generate model Payment invoice:references confirmation:references amount:integer error:string error_code:string message:string action:string params:text success:boolean test:boolean
+
+rails generate model PetroCardMaster bank_account_number:string bank_account_name:string bank_account_branch:string bank_ifsc_code:string fleet_control_card_number:string customer:references customer_name:string
+
+rails generate model PhoneType name:string
+
+rails generate model Phone phone_type:references number:string phoneable_type:string phoneable:references primary:boolean
+
+rails generate model ReferralBonuse amount:integer name:string
+
+rails generate model ReferralProgram active:boolean description:text name:string referral_bonus:references
+
+rails generate model ReferralType name:string
+
+rails generate model Referral applied:boolean clicked_at:datetime email:string name:string purchased_at:datetime referral_program:references referral_type:references referral_user:references referring_user:references registered_at:datetime sent_at:datetime
+
+rails generate model Role name:string
+
+rails generate model Shipper email:references terms_of_service_accepted:boolean notify_via_email:boolean notify_via_sms:boolean notify_via_call:boolean is_verified:boolean company_name:string company_registration_number:string registration_photo_link:string primary_phone:string username:string license_no:string license_photo_link:string pan_no:string PAN_photo_link:string office_phone_no:string state:string city:string is_activated:boolean loads_count:integer bookings_count:integer role:string
+
+rails generate model TruckerRequestTruck trucker_request:references truck:references gps_link:string
+
+rails generate model TruckerRequest request:references route_start:string route_end:string tonnage:decimal trucks_no_available:integer is_active:boolean is_booked:boolean booked_price:decimal quoted_price:decimal last_quoted_price:decimal available_date:date truck_type:string has_GPS:boolean route:references trucker:references request_state:string read:boolean
+
+rails generate model Trucker trucker:references email:references terms_of_service_accepted:boolean notify_via_email:boolean notify_via_sms:boolean notify_via_call:boolean is_verified:boolean trucker_name:string username:string pan_no:string PAN_photo_link:string office_phone_no:string state:string city:string is_activated:boolean trucks_count:integer bookings_count:integer role:string has_fleet:boolean fleet_size:integer has_petro_card:boolean
+
+rails generate model Truck driver:references truck_number:string truck_company:string is_verified:boolean license_no:string rc_no:string has_insurance:boolean insurance_no:string has_gps:boolean gps:references truck_type:string tonnage:integer has_petro_card:boolean truck_year:date petrocard:references route:references route_start:string route_end:string bookings_count:integer is_booked:boolean status:string quoted_price:decimal is_active:boolean current_booking:references is_available:boolean last_booked_date:date location:string last_location:string trucker:references chassis_no:string gps_company:string
+
+rails generate model UserRole role:references user:references
+
+rails generate model User first_name:string last_name:string email:string state:string account:references password_salt:string crypted_password:string perishable_token:string persistence_token:string access_token:string comments_count:integer mrole:references{polymorphic} username:string primary_phone_no:string
+
+rails generate model UsersNewsletter user:references newsletter:references
